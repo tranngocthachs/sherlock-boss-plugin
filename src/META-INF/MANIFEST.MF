@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+BOSS-Plugin-Id: warwick.dcs.sherlock
+BOSS-Plugin-Name: Sherlock Plugin
+BOSS-Plugin-Version: 1.0.0
+BOSS-Plugin-Author: Thach Tran
+BOSS-Plugin-Email: tranngocthachs@gmail.com
+BOSS-Plugin-Description: Source code plagiarism detection plugin for students submissions using Sherlock engine

@@ -1,0 +1,36 @@
+
+		<style type="text/css">
+			textarea {
+				font-family: monospace;
+				font-size: 
+				overflow: auto;
+				width: 100%;
+				resize: none
+			}
+		</style>	
+	
+		<table width="100%" border="0">
+			<tr>
+				<td width="50%">
+					<textarea name="leftori" cols="2" rows="20" readonly="readonly" class="ori">$leftori</textarea>
+					<textarea style="display: none" name="leftori-alt" cols="2" rows="20" readonly="readonly" class="ori">$leftori-alt</textarea>
+				</td>
+				<td width="50%">
+					<textarea name="rightori" cols="2" rows="20" readonly="readonly" class="ori">$rightori</textarea>
+					<textarea style="display: none" name="rightori-alt" cols="2" rows="20" readonly="readonly" class="ori">$rightori-alt</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td width="50%">
+					<textarea name="left" cols="2" rows="20" readonly="readonly" class="tok">$left</textarea>
+					<textarea style="display: none" name="left-alt" cols="2" rows="20" readonly="readonly" class="tok">$left-alt</textarea>
+				</td>
+				<td width="50%">
+					<textarea name="right" cols="2" rows="20" readonly="readonly" class="tok">$right</textarea>
+					<textarea style="display: none" name="right-alt" cols="2" rows="20" readonly="readonly" class="tok">$right-alt</textarea>
+				</td>
+			</tr>
+		</table>
+		<input type="checkbox" class="ori" id="0"/><label for="0">Show whole of submitted files</label><br />
+		<input type="checkbox" class="tok" id="1"/><label for="1">Show whole of tokenised files</label>
+		</script>

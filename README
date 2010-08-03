@@ -1,0 +1,8 @@
+To build this plugin, the easiest way is to use Eclipse. Checkout this project
+into an Eclipse project. Make sure you checkout BOSS2
+(http://github.com/tranngocthachs/BOSS2) into a project in Eclipse as well and
+add that project to the build path of this project. Then just use the export
+JAR function of Eclipse. Make sure you include both /src and /lib folder and
+also point Eclipse to the supplied MANIFEST.MF file. You can then proceed with
+the export and in the end you will have a proper plugin JAR file which can then
+be installed into an instance of BOSS2.

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<weblets-config xmlns="http://weblets.dev.java.net/config">
+  <weblet>
+    <weblet-name>warwick.dcs.sherlock</weblet-name>
+    <weblet-class>net.java.dev.weblets.packaged.PackagedWeblet</weblet-class>
+    <init-param>
+      <param-name>package</param-name>
+      <param-value>resources</param-value>
+    </init-param>
+  </weblet>
+  <weblet-mapping>
+    <weblet-name>warwick.dcs.sherlock</weblet-name>
+    <url-pattern>/sherlock/*</url-pattern>
+  </weblet-mapping>
+</weblets-config>

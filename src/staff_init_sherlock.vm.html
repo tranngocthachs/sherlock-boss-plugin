@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Plagiarism Detection with Sherlock</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<link rel="StyleSheet" href="$context.getStaticPath()/css/tables.css" type="text/css" media="screen"/>
+		<script type="text/javascript" src="$context.getStaticPath()/js/targethack.js"></script>
+	</head>
+	
+	<body>
+		<div class="logodiv">
+			<a href="$context.getPageUrl("system", "home")"><img  class="logo" alt="Small BOSS2 Logo" src="$context.getStaticPath()/img/logo.png"/></a>
+		</div>
+				
+		<div class="usernav">
+			Hello, $greet (<a href="$context.getPageUrl("system", "logout")">Log out</a>)
+		</div>		
+		
+		<div class="textbar"><h1>BOSS 2: Detect plagiarism using Sherlock for $assignment.getName()</h1></div>
+
+		<div class="breadcrumbs"><a href="$context.getPageUrl("system", "home")">Home</a> : <a href="$context.getPageUrl("staff", "modules")">Staff Modules</a> : <a href="$context.getPageUrl("staff", "assignments")?module=$module.getId()&amp;view=marking">Assignments for $module.getName()</a> : <a href="$context.getPageUrl("staff", "submissions")?assignment=$assignment.getId()">Submissions for $assignment.getName()</a> : Detect plagiarism for $assignment.getName()</div>
+
+		<div class="control">
+			<h2>Navigate...</h2>
+			<ul>
+				<li><a href="$context.getPageUrl("staff", "modules")">My modules</a></li>
+				<li><a href="$context.getPageUrl("system", "logout")">Log out</a></li>
+			</ul>
+		</div>	
+				
+		<div class="table">
+			<h3>Previous Sherlock Sessions</h3>
+				#if( $sessions.isEmpty() )
+					<p>No saved session on this assignment</p>
+				#else
+				<table class="full">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Last saved</th>
+							<th>File(s) involved</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						#set( $style="odd" )
+						#foreach( $session in $sessions )
+							#set( $idx = $velocityCount - 1 )
+							<tr class="$style">
+								<td>$session.getId()</td>
+								<td>$times.get($idx)</td>
+								<td>
+									#set( $files = $session.getSelectedFilenames() )
+									#foreach( $file in $files )
+									${file}<br />
+									#end
+								</td>
+								<td>
+									<form action="$context.getPageUrl("staff", "run_sherlock")" method="get">
+										<input type="submit" name="do" value="Rerun"/><br/>
+										<input type="submit" name="do" value="View Result"/><br/>
+										<input type="hidden" name="assignment" value="$assignment.getId()"/>
+										<input type="hidden" name="session" value="$session.getId()"/>
+									</form>
+									<form action="$context.getPageUrl("staff", "run_sherlock")" method="post">
+										<input type="submit" name="do" value="Delete"/>
+										<input type="hidden" name="assignment" value="$assignment.getId()"/>
+										<input type="hidden" name="session" value="$session.getId()"/>
+									</form>
+								</td>
+							</tr>
+							#if( $style == "odd" )
+								#set( $style = "even" )
+							#else
+								#set( $style = "odd" )
+							#end
+						#end
+					</tbody>
+				</table>
+				#end
+				<h3>Start New Session</h3>
+				<form action="$context.getPageUrl("staff", "run_sherlock")" method="get">
+				<div align="center">
+					<input type="submit" name="do" value="New Session"/>
+					<input type="hidden" name="assignment" value="$assignment.getId()"/>
+				</div>
+				</form>
+		</div>	
+		
+		<div class="navbar">
+			<h2 class="nostyle">
+				Navigate to:
+			</h2>
+			
+			<ul>
+				<li><a href="$context.getPageUrl("help", "about")" rel="external">About BOSS</a></li>
+				<li><a href="$context.getPageUrl("help", "accessibility")" rel="external">Accessibility</a></li>
+				<li><a href="$helpUrl" rel="external">Help</a></li>
+			</ul>
+		</div>		
+	</body>
+</html>

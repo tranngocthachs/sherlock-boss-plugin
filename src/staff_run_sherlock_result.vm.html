@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Sherlock Matching Results</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<link rel="StyleSheet" href="$context.getStaticPath()/css/tables.css" type="text/css" media="screen"/>
+		<script type="text/javascript" src="$context.getStaticPath()/js/targethack.js"></script>
+		<link rel="StyleSheet" href="$context.getWebletResourceURL("warwick.dcs.sherlock", "/css/jquery.treeTable.css")" type="text/css" />
+		<link rel="StyleSheet" href="$context.getWebletResourceURL("warwick.dcs.sherlock", "/css/nyroModal.css")" type="text/css" />
+		<script type="text/javascript" src="$context.getWebletResourceURL("warwick.dcs.sherlock", "/js/jquery-1.4.2.min.js")"></script>
+		<script type="text/javascript" src="$context.getWebletResourceURL("warwick.dcs.sherlock", "/js/jquery.treeTable.min.js")"></script>
+		<script type="text/javascript" src="$context.getWebletResourceURL("warwick.dcs.sherlock", "/js/jquery.nyroModal-1.6.2.pack.js")"></script>
+		<script type="text/javascript">
+			$(document).ready(function()  {
+	  			$(".result").treeTable();
+	  			initBinding();
+	  			$('a.nyroModal').nyroModal({
+		  			width: '1000', 
+		  			height: '600',
+		  			endShowContent: function() { initBinding(); } 
+			  			});
+			});
+			function initBinding() {
+				$("input:checkbox.ori").click(function () {
+					$("textarea.ori").toggle();
+				});
+
+				$("input:checkbox.tok").click(function () {
+					$("textarea.tok").toggle();
+				});
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div class="logodiv">
+			<a href="$context.getPageUrl("system", "home")"><img  class="logo" alt="Small BOSS2 Logo" src="$context.getStaticPath()/img/logo.png"/></a>
+		</div>
+				
+		<div class="usernav">
+			Hello, $greet (<a href="$context.getPageUrl("system", "logout")">Log out</a>)
+		</div>		
+		
+		<div class="textbar"><h1>BOSS 2: Detect plagiarism using Sherlock for $assignment.getName()</h1></div>
+
+		<div class="breadcrumbs"><a href="$context.getPageUrl("system", "home")">Home</a> : <a href="$context.getPageUrl("staff", "modules")">Staff Modules</a> : <a href="$context.getPageUrl("staff", "assignments")?module=$module.getId()&amp;view=marking">Assignments for $module.getName()</a> : <a href="$context.getPageUrl("staff", "submissions")?assignment=$assignment.getId()">Submissions for $assignment.getName()</a> : Detect plagiarism for $assignment.getName()</div>
+
+		<div class="control">
+			<h2>Navigate...</h2>
+			<ul>
+				<li><a href="$context.getPageUrl("staff", "modules")">My modules</a></li>
+				<li><a href="$context.getPageUrl("system", "logout")">Log out</a></li>
+			</ul>
+		</div>	
+				
+		<div class="table">
+			<h2>Plagiarism Checking Result Using Sherlock</h2>
+				#if( $hasMatch )
+				<form action="$context.getPageUrl("staff", "save_sherlock_session")" method="post">
+					<table class="result">
+						<thead>
+							<tr>
+								#foreach($head in $tableHead)
+								<th>$head</th>
+								#end
+							</tr>
+						</thead>
+						<tbody>
+							#foreach($row in $rows)
+								#set( $idx = $velocityCount - 1 )
+								#set( $matchIdx = $matchIndices.get($idx) )
+								<tr id="$ids.get($idx)" class="$classes.get($idx)">
+									#foreach($value in $row)
+									<td>
+										#if( $velocityCount == 1 )
+											#if( $matchIdx.intValue() == -1 )
+												$value
+											#else
+												<a href="$context.getPageUrl("staff", "sherlock_one_match")?assignment=$assignment.getId()&matchIdx=$matchIdx.intValue()" class="nyroModal">$value</a>
+											#end
+										#elseif( $velocityCount == $row.size() )
+											<input type="checkbox" name="marked" value="$matchIdx.intValue()" #if( $value == "true" ) checked="checked" #end />
+										#else
+											$value
+										#end
+									</td>
+									#end
+								</tr>
+							#end
+							<tr>
+								<td colspan="1">
+									<div align="center">
+										<input type="submit" name="do" value="Save"/>
+										#if( $session && ($rerun || $viewResult) )
+										<input type="hidden" name="session" value="$session"/>
+										#end
+									</div>
+								</td>
+								#if( $rerun || $viewResult )
+								<td colspan="2"><div align="center"><input type="submit" name="do" value="Save (As New Session)"/></div>
+								</td>
+								#end
+								<td colspan="2"><div align="center"><input type="submit" name="do" value="Discard"/></div></td>
+							</tr>
+						</tbody>
+					</table>
+					<input type="hidden" name="assignment" value="$assignment.getId()"/>
+					#foreach($file in $files)
+					<input type="hidden" name="files" value="$file"/>
+					#end
+				</form>
+				#else
+				<p>There's no match!</p>
+				#end
+		</div>	
+		
+		<div class="navbar">
+			<h2 class="nostyle">
+				Navigate to:
+			</h2>
+			
+			<ul>
+				<li><a href="$context.getPageUrl("help", "about")" rel="external">About BOSS</a></li>
+				<li><a href="$context.getPageUrl("help", "accessibility")" rel="external">Accessibility</a></li>
+				<li><a href="$helpUrl" rel="external">Help</a></li>
+			</ul>
+		</div>		
+	</body>
+</html>
