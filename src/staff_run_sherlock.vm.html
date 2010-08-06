@@ -7,10 +7,65 @@
 		<meta http-equiv="Content-Style-Type" content="text/css" />
 		<link rel="StyleSheet" href="$context.getStaticPath()/css/tables.css" type="text/css" media="screen"/>
 		<script type="text/javascript" src="$context.getStaticPath()/js/targethack.js"></script>
-		<link type="text/css" href="$context.getWebletResourceURL("warwick.dcs.sherlock", "/css/cupertino/jquery-ui-1.8.2.custom.css")" rel="stylesheet" />	
+		<link type="StyleSheet" href="$context.getWebletResourceURL("warwick.dcs.sherlock", "/css/cupertino/jquery-ui-1.8.2.custom.css")" rel="stylesheet" />
+		<link rel="StyleSheet" href="$context.getWebletResourceURL("warwick.dcs.sherlock", "/css/jquery.treeTable.css")" type="text/css" />
+		<link rel="StyleSheet" href="$context.getWebletResourceURL("warwick.dcs.sherlock", "/css/nyroModal.css")" type="text/css" />
+		<link rel="StyleSheet" href="$context.getWebletResourceURL("warwick.dcs.sherlock", "/css/jquery.loadmask.css")" type="text/css" />
 		<script type="text/javascript" src="$context.getWebletResourceURL("warwick.dcs.sherlock", "/js/jquery-1.4.2.min.js")"></script>
 		<script type="text/javascript" src="$context.getWebletResourceURL("warwick.dcs.sherlock", "/js/jquery-ui-1.8.2.custom.min.js")"></script>
 		<script type="text/javascript" src="$context.getWebletResourceURL("warwick.dcs.sherlock", "/js/jquery-tabs.js")"></script>
+		<script type="text/javascript" src="$context.getWebletResourceURL("warwick.dcs.sherlock", "/js/jquery.form.js")"></script>
+		<script type="text/javascript" src="$context.getWebletResourceURL("warwick.dcs.sherlock", "/js/jquery.loadmask.min.js")"></script>
+		<script type="text/javascript" src="$context.getWebletResourceURL("warwick.dcs.sherlock", "/js/jquery.treeTable.min.js")"></script>
+		<script type="text/javascript" src="$context.getWebletResourceURL("warwick.dcs.sherlock", "/js/jquery.nyroModal-1.6.2.pack.js")"></script>
+		<script type="text/javascript">
+			// prepare the form when the DOM is ready 
+			$(document).ready(function() {
+				$("#process").bind("click", function () {
+					$(".table").mask("Processing...");
+				});
+				
+				$("#cancel").bind("click", function () {
+					$(".table").unmask();
+				});
+			    var options = { 
+			        target:        'body',   // target element(s) to be updated with server response
+			        success:       showResponse  // post-submit callback 
+			         
+			    }; 
+			    // bind form using 'ajaxForm' 
+			    $('#myForm').ajaxForm(options);
+			}); 
+			// post-submit callback 
+			function showResponse(responseText, statusText, xhr, $form)  { 
+			    // for normal html responses, the first argument to the success callback 
+			    // is the XMLHttpRequest object's responseText property 
+			 
+			    // if the ajaxForm method was passed an Options Object with the dataType 
+			    // property set to 'xml' then the first argument to the success callback 
+			    // is the XMLHttpRequest object's responseXML property 
+			 
+			    // if the ajaxForm method was passed an Options Object with the dataType 
+			    // property set to 'json' then the first argument to the success callback 
+			    // is the json data object returned by the server 
+				$(".result").treeTable();
+	  			initBinding();
+	  			$('a.nyroModal').nyroModal({
+		  			width: '1000', 
+		  			height: '600',
+		  			endShowContent: function() { initBinding(); } 
+				});
+			}
+			function initBinding() {
+				$("input:checkbox.ori").click(function () {
+					$("textarea.ori").toggle();
+				});
+
+				$("input:checkbox.tok").click(function () {
+					$("textarea.tok").toggle();
+				});
+			} 
+		</script>
 	</head>
 	
 	<body>
@@ -36,7 +91,7 @@
 				
 		<div class="table">
 			<h2>Plagiarism Checking Using Sherlock</h2>
-			<form action="$context.getPageUrl("staff", "perform_run_sherlock")?assignment=$assignment.getId()" method="post">
+			<form id="myForm" action="$context.getPageUrl("staff", "perform_run_sherlock")?assignment=$assignment.getId()" method="post">
 				#if($missingFields)
 				<p>
 					<span class="error">One or more configurations are missing or invalid.</span>
@@ -188,7 +243,7 @@
 							</td>
 							<td>
 								<p>
-									<input type="submit" value="Run Sherlock"/><br/>
+									<input id="process" type="submit" value="Run Sherlock"/><br/>
 									#if( $newSession )
 										#set( $do = "newSession" )
 									#elseif( $rerun )
@@ -204,7 +259,6 @@
 				</table>						
 			</form>
 		</div>	
-		
 		<div class="navbar">
 			<h2 class="nostyle">
 				Navigate to:

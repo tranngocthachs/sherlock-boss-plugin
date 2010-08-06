@@ -465,7 +465,6 @@ SherlockProcessCallback {
 			templateContext.put("rows", rows);
 			templateContext.put("matchIndices", matchIndices);
 		}
-		
 		templateContext.put("newSession", newSession);
 		templateContext.put("rerun", rerun);
 		templateContext.put("session", sherlockSessionId);
