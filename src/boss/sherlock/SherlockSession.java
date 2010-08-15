@@ -1,4 +1,4 @@
-package sherlock;
+package boss.sherlock;
 
 import uk.ac.warwick.dcs.boss.plugins.spi.dao.PluginEntity;
 

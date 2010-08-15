@@ -1,4 +1,4 @@
-package sherlock;
+package boss.sherlock;
 
 import java.io.IOException;
 import java.util.Collection;

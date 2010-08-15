@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-BOSS-Plugin-Id: warwick.dcs.sherlock
+BOSS-Plugin-Id: boss.sherlock
 BOSS-Plugin-Name: Sherlock Plugin
 BOSS-Plugin-Version: 1.0.0
 BOSS-Plugin-Author: Thach Tran

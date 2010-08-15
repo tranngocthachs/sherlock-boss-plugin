@@ -1,4 +1,4 @@
-package sherlock;
+package boss.sherlock;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

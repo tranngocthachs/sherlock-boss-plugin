@@ -1,5 +1,5 @@
-sherlock.InitSherlockPage
-sherlock.RunSherlockPage
-sherlock.PerformRunSherlockPage
-sherlock.SherlockOneMatchPage
-sherlock.SaveSherlockSessionPage
+boss.sherlock.InitSherlockPage
+boss.sherlock.RunSherlockPage
+boss.sherlock.PerformRunSherlockPage
+boss.sherlock.SherlockOneMatchPage
+boss.sherlock.SaveSherlockSessionPage

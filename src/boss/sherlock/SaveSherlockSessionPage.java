@@ -1,4 +1,4 @@
-package sherlock;
+package boss.sherlock;
 
 import java.io.BufferedWriter;
 import java.io.File;
