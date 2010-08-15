@@ -32,7 +32,7 @@ public class InitSherlockPage extends StaffPluginPageProvider implements StaffAs
 	}
 
 	public String getLinkLabel() {
-		return "Run Plagiarism with Sherlock";
+		return "Run plagiarism detection with Sherlock";
 	}
 
 	public String getEntryPageName() {

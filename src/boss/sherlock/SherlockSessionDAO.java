@@ -71,8 +71,8 @@ public class SherlockSessionDAO extends PluginEntityDAO<SherlockSession> {
 		tblSchema.addIntColumn("assignment_id", true);
 		tblSchema.addIntColumn("resource_id", true);
 		tblSchema.addTextColumn("selected_filenames", true);
-		tblSchema.setForeignKey("assignment_id", Assignment.class);
-		tblSchema.setForeignKey("resource_id", Resource.class);
+		tblSchema.setForeignKey("assignment_id", "assignment");
+		tblSchema.setForeignKey("resource_id", "resource");
 		return tblSchema;
 	}
 }
