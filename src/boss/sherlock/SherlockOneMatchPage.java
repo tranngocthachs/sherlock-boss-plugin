@@ -26,7 +26,7 @@ import uk.ac.warwick.dcs.cobalt.sherlock.MatchTableDataStruct;
 import uk.ac.warwick.dcs.cobalt.sherlock.Settings;
 
 public class SherlockOneMatchPage extends StaffPluginPageProvider {
-	public String getName() {
+	public String getPageName() {
 		return "sherlock_one_match";
 	}
 

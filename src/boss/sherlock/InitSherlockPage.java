@@ -27,16 +27,12 @@ import uk.ac.warwick.dcs.boss.plugins.spi.pages.StaffPluginPageProvider;
 
 public class InitSherlockPage extends StaffPluginPageProvider implements StaffAssignmentPluginEntryProvider {
 	
-	public String getName() {
+	public String getPageName() {
 		return "init_sherlock";
 	}
 
 	public String getLinkLabel() {
 		return "Run plagiarism detection with Sherlock";
-	}
-
-	public String getEntryPageName() {
-		return getName();
 	}
 
 	public String getAssignmentParaString() {

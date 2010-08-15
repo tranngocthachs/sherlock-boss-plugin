@@ -6,8 +6,6 @@ import java.util.Collection;
 import java.util.Vector;
 
 import uk.ac.warwick.dcs.boss.model.dao.DAOException;
-import uk.ac.warwick.dcs.boss.model.dao.beans.Assignment;
-import uk.ac.warwick.dcs.boss.model.dao.beans.Resource;
 import uk.ac.warwick.dcs.boss.plugins.dbschema.SQLTableSchema;
 import uk.ac.warwick.dcs.boss.plugins.spi.dao.PluginEntityDAO;
 

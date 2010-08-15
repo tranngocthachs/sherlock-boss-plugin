@@ -38,7 +38,7 @@ import uk.ac.warwick.dcs.cobalt.sherlock.Settings;
 
 public class RunSherlockPage extends StaffPluginPageProvider {
 	
-	public String getName() {
+	public String getPageName() {
 		return "run_sherlock";
 	}
 

@@ -42,7 +42,7 @@ import uk.ac.warwick.dcs.cobalt.sherlock.Settings;
 
 public class SaveSherlockSessionPage extends StaffPluginPageProvider {
 
-	public String getName() {
+	public String getPageName() {
 		return "save_sherlock_session";
 	}
 

@@ -58,7 +58,7 @@ import uk.ac.warwick.dcs.cobalt.sherlock.ZipHandler;
 
 public class PerformRunSherlockPage extends StaffPluginPageProvider implements
 SherlockProcessCallback {
-	public String getName() {
+	public String getPageName() {
 		return "perform_run_sherlock";
 	}
 
