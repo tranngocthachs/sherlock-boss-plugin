@@ -37,7 +37,7 @@ import uk.ac.warwick.dcs.boss.model.dao.ISubmissionDAO;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Assignment;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Module;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Submission;
-import uk.ac.warwick.dcs.boss.plugins.spi.pages.StaffPluginPageProvider;
+import uk.ac.warwick.dcs.boss.plugins.spi.pages.IStaffPluginPage;
 import uk.ac.warwick.dcs.cobalt.sherlock.DirectoryFilter;
 import uk.ac.warwick.dcs.cobalt.sherlock.DynamicTreeTableModel;
 import uk.ac.warwick.dcs.cobalt.sherlock.FileTypeProfile;
@@ -56,7 +56,7 @@ import uk.ac.warwick.dcs.cobalt.sherlock.TokeniseFiles;
 import uk.ac.warwick.dcs.cobalt.sherlock.ZipFilenameFilter;
 import uk.ac.warwick.dcs.cobalt.sherlock.ZipHandler;
 
-public class PerformRunSherlockPage extends StaffPluginPageProvider implements
+public class PerformRunSherlockPage extends IStaffPluginPage implements
 SherlockProcessCallback {
 	public String getPageName() {
 		return "perform_run_sherlock";

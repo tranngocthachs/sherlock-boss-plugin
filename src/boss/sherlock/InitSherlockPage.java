@@ -22,10 +22,10 @@ import uk.ac.warwick.dcs.boss.model.dao.IModuleDAO;
 import uk.ac.warwick.dcs.boss.model.dao.IStaffInterfaceQueriesDAO;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Assignment;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Module;
-import uk.ac.warwick.dcs.boss.plugins.spi.extralinks.StaffAssignmentPluginEntryProvider;
-import uk.ac.warwick.dcs.boss.plugins.spi.pages.StaffPluginPageProvider;
+import uk.ac.warwick.dcs.boss.plugins.spi.extralinks.IStaffAssignmentPluginEntryLink;
+import uk.ac.warwick.dcs.boss.plugins.spi.pages.IStaffPluginPage;
 
-public class InitSherlockPage extends StaffPluginPageProvider implements StaffAssignmentPluginEntryProvider {
+public class InitSherlockPage extends IStaffPluginPage implements IStaffAssignmentPluginEntryLink {
 	
 	public String getPageName() {
 		return "init_sherlock";
@@ -35,7 +35,7 @@ public class InitSherlockPage extends StaffPluginPageProvider implements StaffAs
 		return "Run plagiarism detection with Sherlock";
 	}
 
-	public String getAssignmentParaString() {
+	public String getAssignmentParaName() {
 		return "assignment";
 	}
 
@@ -55,12 +55,12 @@ public class InitSherlockPage extends StaffPluginPageProvider implements StaffAs
 		}
 		
 		// Get assignmentId
-		String assignmentString = pageContext.getParameter(getAssignmentParaString());
+		String assignmentString = pageContext.getParameter(getAssignmentParaName());
 		if (assignmentString == null) {
 			throw new ServletException("No assignment parameter given");
 		}
 		Long assignmentId = Long
-				.valueOf(pageContext.getParameter(getAssignmentParaString()));
+				.valueOf(pageContext.getParameter(getAssignmentParaName()));
 		
 		// Render page
 		try {

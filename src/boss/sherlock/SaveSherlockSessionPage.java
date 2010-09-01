@@ -34,13 +34,13 @@ import uk.ac.warwick.dcs.boss.model.dao.IStaffInterfaceQueriesDAO;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Assignment;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Module;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Resource;
-import uk.ac.warwick.dcs.boss.plugins.spi.pages.StaffPluginPageProvider;
+import uk.ac.warwick.dcs.boss.plugins.spi.pages.IStaffPluginPage;
 import uk.ac.warwick.dcs.cobalt.sherlock.Marking;
 import uk.ac.warwick.dcs.cobalt.sherlock.Match;
 import uk.ac.warwick.dcs.cobalt.sherlock.MatchTableDataStruct;
 import uk.ac.warwick.dcs.cobalt.sherlock.Settings;
 
-public class SaveSherlockSessionPage extends StaffPluginPageProvider {
+public class SaveSherlockSessionPage extends IStaffPluginPage {
 
 	public String getPageName() {
 		return "save_sherlock_session";

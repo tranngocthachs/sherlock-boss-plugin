@@ -2,14 +2,12 @@ package boss.sherlock;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -33,10 +31,10 @@ import uk.ac.warwick.dcs.boss.model.dao.IStaffInterfaceQueriesDAO;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Assignment;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Module;
 import uk.ac.warwick.dcs.boss.model.testing.impl.TemporaryDirectory;
-import uk.ac.warwick.dcs.boss.plugins.spi.pages.StaffPluginPageProvider;
+import uk.ac.warwick.dcs.boss.plugins.spi.pages.IStaffPluginPage;
 import uk.ac.warwick.dcs.cobalt.sherlock.Settings;
 
-public class RunSherlockPage extends StaffPluginPageProvider {
+public class RunSherlockPage extends IStaffPluginPage {
 	
 	public String getPageName() {
 		return "run_sherlock";
@@ -139,12 +137,8 @@ public class RunSherlockPage extends StaffPluginPageProvider {
 				|| !Settings.getSourceDirectory().exists()) {
 			File sherlockTempDir;
 			try {
-				InputStream is = new FileInputStream(new File(pageContext
-						.getConfigurationFilePath()));
-				Properties prop = new Properties();
-				prop.load(is);
 				sherlockTempDir = TemporaryDirectory.createTempDir("sherlock",
-						new File(prop.getProperty("testing.temp_dir")));
+						pageContext.getTestingDir());
 			} catch (IOException e) {
 				throw new ServletException("couldn't create sherlock temp dir",
 						e);

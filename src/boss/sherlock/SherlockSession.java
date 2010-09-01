@@ -1,8 +1,8 @@
 package boss.sherlock;
 
-import uk.ac.warwick.dcs.boss.plugins.spi.dao.PluginEntity;
+import uk.ac.warwick.dcs.boss.plugins.spi.dao.IPluginEntity;
 
-public class SherlockSession extends PluginEntity {
+public class SherlockSession extends IPluginEntity {
 
 	private Long assignmentId;
 	private Long resourceId;

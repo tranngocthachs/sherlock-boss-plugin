@@ -7,9 +7,9 @@ import java.util.Vector;
 
 import uk.ac.warwick.dcs.boss.model.dao.DAOException;
 import uk.ac.warwick.dcs.boss.plugins.dbschema.SQLTableSchema;
-import uk.ac.warwick.dcs.boss.plugins.spi.dao.PluginEntityDAO;
+import uk.ac.warwick.dcs.boss.plugins.spi.dao.IPluginDBMapping;
 
-public class SherlockSessionDAO extends PluginEntityDAO<SherlockSession> {
+public class SherlockSessionDBMapping extends IPluginDBMapping<SherlockSession> {
 
 	private String mySQLSortingString = "id DESC";
 	
