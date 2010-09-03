@@ -22,6 +22,8 @@ import org.apache.log4j.Level;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 
+import boss.plugins.spi.pages.IStaffPluginPage;
+
 import uk.ac.warwick.dcs.boss.frontend.PageContext;
 import uk.ac.warwick.dcs.boss.frontend.sites.StaffPageFactory;
 import uk.ac.warwick.dcs.boss.model.FactoryException;
@@ -37,7 +39,6 @@ import uk.ac.warwick.dcs.boss.model.dao.ISubmissionDAO;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Assignment;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Module;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Submission;
-import uk.ac.warwick.dcs.boss.plugins.spi.pages.IStaffPluginPage;
 import uk.ac.warwick.dcs.cobalt.sherlock.DirectoryFilter;
 import uk.ac.warwick.dcs.cobalt.sherlock.DynamicTreeTableModel;
 import uk.ac.warwick.dcs.cobalt.sherlock.FileTypeProfile;

@@ -10,6 +10,9 @@ import javax.servlet.ServletException;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 
+import boss.plugins.spi.extralinks.IStaffAssignmentPluginEntryLink;
+import boss.plugins.spi.pages.IStaffPluginPage;
+
 import uk.ac.warwick.dcs.boss.frontend.PageContext;
 import uk.ac.warwick.dcs.boss.model.FactoryException;
 import uk.ac.warwick.dcs.boss.model.FactoryRegistrar;
@@ -22,8 +25,6 @@ import uk.ac.warwick.dcs.boss.model.dao.IModuleDAO;
 import uk.ac.warwick.dcs.boss.model.dao.IStaffInterfaceQueriesDAO;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Assignment;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Module;
-import uk.ac.warwick.dcs.boss.plugins.spi.extralinks.IStaffAssignmentPluginEntryLink;
-import uk.ac.warwick.dcs.boss.plugins.spi.pages.IStaffPluginPage;
 
 public class InitSherlockPage extends IStaffPluginPage implements IStaffAssignmentPluginEntryLink {
 	

@@ -1,6 +1,6 @@
 package boss.sherlock;
 
-import uk.ac.warwick.dcs.boss.plugins.spi.dao.IPluginEntity;
+import boss.plugins.spi.dao.IPluginEntity;
 
 public class SherlockSession extends IPluginEntity {
 

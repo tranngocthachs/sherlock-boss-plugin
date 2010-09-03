@@ -16,6 +16,8 @@ import javax.servlet.ServletException;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 
+import boss.plugins.spi.pages.IStaffPluginPage;
+
 import uk.ac.warwick.dcs.boss.frontend.PageContext;
 import uk.ac.warwick.dcs.boss.frontend.sites.StaffPageFactory;
 import uk.ac.warwick.dcs.boss.model.FactoryException;
@@ -31,7 +33,6 @@ import uk.ac.warwick.dcs.boss.model.dao.IStaffInterfaceQueriesDAO;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Assignment;
 import uk.ac.warwick.dcs.boss.model.dao.beans.Module;
 import uk.ac.warwick.dcs.boss.model.testing.impl.TemporaryDirectory;
-import uk.ac.warwick.dcs.boss.plugins.spi.pages.IStaffPluginPage;
 import uk.ac.warwick.dcs.cobalt.sherlock.Settings;
 
 public class RunSherlockPage extends IStaffPluginPage {
