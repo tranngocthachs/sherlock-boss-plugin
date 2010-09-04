@@ -216,7 +216,7 @@ public class SaveSherlockSessionPage extends IStaffPluginPage {
 					Long sessionId = Long.valueOf(pageContext.getParameter("session"));
 					try {
 						f.beginTransaction();
-						IEntityDAO<SherlockSession> sherlockSessionDao = f.getAdditionalDAOInstance(SherlockSession.class);
+						IEntityDAO<SherlockSession> sherlockSessionDao = f.getPluginDAOInstance(SherlockSession.class);
 						SherlockSession sherlockSession = sherlockSessionDao.retrievePersistentEntity(sessionId);
 						Long oldResourceId = sherlockSession.getResourceId();
 						sherlockSession.setResourceId(resourceId);
@@ -236,7 +236,7 @@ public class SaveSherlockSessionPage extends IStaffPluginPage {
 					sherlockSession.setSelectedFilenames(files.toArray(new String[0]));
 					try {
 						f.beginTransaction();
-						IEntityDAO<SherlockSession> sherlockSessionDao = f.getAdditionalDAOInstance(SherlockSession.class);
+						IEntityDAO<SherlockSession> sherlockSessionDao = f.getPluginDAOInstance(SherlockSession.class);
 						Long sherlockSessionId = sherlockSessionDao.createPersistentCopy(sherlockSession); 
 						sherlockSession.setId(sherlockSessionId);
 						f.endTransaction();

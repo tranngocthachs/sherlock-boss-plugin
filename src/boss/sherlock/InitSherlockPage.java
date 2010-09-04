@@ -83,7 +83,7 @@ public class InitSherlockPage extends IStaffPluginPage implements IStaffAssignme
 			templateContext.put("module", module);
 			templateContext.put("assignment", assignment);
 			
-			IEntityDAO<SherlockSession> sherlockSessionDao = f.getAdditionalDAOInstance(SherlockSession.class);
+			IEntityDAO<SherlockSession> sherlockSessionDao = f.getPluginDAOInstance(SherlockSession.class);
 			SherlockSession exampleSherlockSession = new SherlockSession();
 			exampleSherlockSession.setAssignmentId(assignmentId);
 			Collection<SherlockSession> sherlockSessions = sherlockSessionDao.findPersistentEntitiesByExample(exampleSherlockSession);

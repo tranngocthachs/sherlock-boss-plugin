@@ -120,7 +120,7 @@ public class RunSherlockPage extends IStaffPluginPage {
 			if (newSession) {
 				reqFiles = assignmentDao.fetchRequiredFilenames(assignmentId).toArray(new String[0]);
 			} else if (rerun) {
-				IEntityDAO<SherlockSession> sherlockSessionDao = f.getAdditionalDAOInstance(SherlockSession.class);
+				IEntityDAO<SherlockSession> sherlockSessionDao = f.getPluginDAOInstance(SherlockSession.class);
 				reqFiles = sherlockSessionDao.retrievePersistentEntity(sherlockSessionId).getSelectedFilenames();; 
 			}
 			f.endTransaction();
@@ -151,7 +151,7 @@ public class RunSherlockPage extends IStaffPluginPage {
 					f.beginTransaction();
 					IResourceDAO resourceDao = f.getResourceDAOInstance();
 					SherlockSession sherlockSession = f
-							.getAdditionalDAOInstance(SherlockSession.class)
+							.getPluginDAOInstance(SherlockSession.class)
 							.retrievePersistentEntity(sherlockSessionId);
 					InputStream resourceStream = resourceDao
 							.openInputStream(sherlockSession.getResourceId());
@@ -305,7 +305,7 @@ public class RunSherlockPage extends IStaffPluginPage {
 			Long sessionId = Long.valueOf(pageContext.getParameter("session"));
 			try {
 				f.beginTransaction();
-				IEntityDAO<SherlockSession> sherlockSessionDao = f.getAdditionalDAOInstance(SherlockSession.class);
+				IEntityDAO<SherlockSession> sherlockSessionDao = f.getPluginDAOInstance(SherlockSession.class);
 				SherlockSession sherlockSession = sherlockSessionDao.retrievePersistentEntity(sessionId);
 				Long resourceId = sherlockSession.getResourceId();
 				sherlockSessionDao.deletePersistentEntity(sessionId);

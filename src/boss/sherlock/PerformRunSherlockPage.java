@@ -124,7 +124,7 @@ SherlockProcessCallback {
 			IModuleDAO moduleDao = f.getModuleDAOInstance();
 			Module module = moduleDao.retrievePersistentEntity(assignment
 					.getModuleId());
-			String[] selectedFiles = f.getAdditionalDAOInstance(SherlockSession.class).retrievePersistentEntity(sessionId).getSelectedFilenames();
+			String[] selectedFiles = f.getPluginDAOInstance(SherlockSession.class).retrievePersistentEntity(sessionId).getSelectedFilenames();
 			templateContext.put("greet", pageContext.getSession()
 					.getPersonBinding().getChosenName());
 			templateContext.put("module", module);
@@ -230,7 +230,7 @@ SherlockProcessCallback {
 		} else if (rerun) {
 			try {
 				f.beginTransaction();
-				selectedFiles = Arrays.asList(f.getAdditionalDAOInstance(SherlockSession.class).retrievePersistentEntity(sherlockSessionId).getSelectedFilenames());
+				selectedFiles = Arrays.asList(f.getPluginDAOInstance(SherlockSession.class).retrievePersistentEntity(sherlockSessionId).getSelectedFilenames());
 				f.endTransaction();
 			} catch (DAOException e) {
 				f.abortTransaction();
