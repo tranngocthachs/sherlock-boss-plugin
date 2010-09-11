@@ -466,6 +466,12 @@ SherlockProcessCallback {
 			templateContext.put("rows", rows);
 			templateContext.put("matchIndices", matchIndices);
 		}
+		else {
+			// no match found, just clean up then
+			SaveSherlockSessionPage.killDirectory(Settings.getSourceDirectory());
+			Settings.setSourceDirectory(null);
+			Settings.setFileList(null);
+		}
 		templateContext.put("newSession", newSession);
 		templateContext.put("rerun", rerun);
 		templateContext.put("session", sherlockSessionId);
