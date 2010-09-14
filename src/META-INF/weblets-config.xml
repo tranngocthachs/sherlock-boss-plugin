@@ -10,6 +10,6 @@
   </weblet>
   <weblet-mapping>
     <weblet-name>boss.sherlock</weblet-name>
-    <url-pattern>/sherlock/*</url-pattern>
+    <url-pattern>/boss.sherlock/*</url-pattern>
   </weblet-mapping>
 </weblets-config>
