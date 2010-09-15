@@ -5,8 +5,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/BOSS2"/>
 	<classpathentry kind="lib" path="lib/sherlock.jar"/>
 	<classpathentry kind="lib" path="lib/tar.jar"/>
-	<classpathentry kind="lib" path="/BOSS2/WebContent/WEB-INF/lib/log4j-1.2.15.jar"/>
-	<classpathentry kind="lib" path="/BOSS2/WebContent/WEB-INF/lib/servlet-api.jar" sourcepath="/BOSS2/WebContent/WEB-INF/lib/servlet-api-src.zip"/>
-	<classpathentry kind="lib" path="/BOSS2/WebContent/WEB-INF/lib/velocity-1.6.4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container/BOSS2"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
